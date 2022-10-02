@@ -3,12 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "development",
-  devtool: "inline-source-map",
   entry: ["./src/index.js"],
-  devServer: {
-    port: 3000,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
@@ -23,13 +18,19 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: "images/[hash][ext][query]",
     clean: true,
   },
   module: {
     rules: [
       {
         test: /\.(css|scss)$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.(m?js|jsx)$/,
@@ -43,17 +44,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|jpe?g|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              publicPath: "./image",
-              outputPath: "./image",
-              // emitFile: false
-            },
-          },
-        ],
+        type: "asset/resource",
       },
       {
         loader: "image-webpack-loader",
