@@ -17,7 +17,7 @@ module.exports = {
   ],
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     assetModuleFilename: "images/[hash][ext][query]",
     clean: true,
   },
@@ -25,12 +25,7 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(m?js|jsx)$/,
