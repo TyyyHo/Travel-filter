@@ -11,7 +11,6 @@ const App = () => {
     <div id="app">
       <Navigation asia={asia} europe={europe} americas={americas} setAsia={setAsia} setEurope={setEurope} setAmericas={setAmericas} />
       <Spot asia={asia} europe={europe} americas={americas} />
-      {/* <img className="bg" src={bg} alt="" /> */}
     </div>
   );
 };
