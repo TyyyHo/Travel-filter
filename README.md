@@ -1,1 +1,1 @@
-Practice for Webpack
+Webpack Practice
